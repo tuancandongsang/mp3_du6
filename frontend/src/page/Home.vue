@@ -2,9 +2,16 @@
   <div id="home">
     <div class="background"></div>
     <div class="container">
-      <h1>MP3 Zing</h1>
+      <h1>MP3 Zing of DU6</h1>
       <div class="search">
-        <input type="text" placeholder="Search name, singer..." />
+        <div class="submit">
+          <input
+            type="text"
+            placeholder="Search name, singer..."
+            v-model="textSearch"
+          />
+          <button @click="SearchForName">Submit</button>
+        </div>
       </div>
       <div class="list">
         <div
@@ -32,24 +39,55 @@
       <div class="main">
         <router-view></router-view>
       </div>
+      <footer>
+        <div class="footer">
+          <span><ShopOutlined /> </span>
+          <span><AudioOutlined /> </span>
+          <span><SearchOutlined /> </span>
+          <span><InstagramOutlined /> </span>
+          <span> <LogoutOutlined /></span>
+        </div>
+      </footer>
     </div>
   </div>
 </template>
 
 <script>
+import {
+  ShopOutlined,
+  AudioOutlined,
+  SearchOutlined,
+  InstagramOutlined,
+  LogoutOutlined,
+} from "@ant-design/icons-vue";
 import "./home.scss";
 export default {
+  components: {
+    ShopOutlined,
+    AudioOutlined,
+    SearchOutlined,
+    InstagramOutlined,
+    LogoutOutlined,
+  },
+
   name: "home",
   data() {
     return {
       select: "list",
+      textSearch: "",
     };
+  },
+  created() {
+    this.select = this.$route.name;
   },
   methods: {
     selectMenu(text) {
       this.select = text;
       console.log(this.$route);
       this.$router.push(`${text}`);
+    },
+    SearchForName() {
+      console.log(this.textSearch);
     },
   },
   computeds: {
@@ -59,6 +97,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-</style>

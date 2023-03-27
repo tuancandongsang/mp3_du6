@@ -1,4 +1,4 @@
-#home{
+#home {
     position: relative;
     background-color: black;
     width: 100vw;
@@ -6,18 +6,21 @@
     top: 0;
     left: 0;
 
-    .background{
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0.2;
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-image: url("https://symbols.vn/wp-content/uploads/2023/02/Tai-Khoan-Zing-Mp3.jpg");
+    .background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.2;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: url("https://photo2.tinhte.vn/data/attachment-files/2021/12/5772625_F28D1000-ACC7-4C74-B135-37F81662B199.jpg");
+
+        // background-image: url("https://symbols.vn/wp-content/uploads/2023/02/Tai-Khoan-Zing-Mp3.jpg");
     }
-    .container{
+
+    .container {
         color: aliceblue;
         width: 600px;
         box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -25,29 +28,61 @@
         position: relative;
         margin: 0 auto;
 
-        
-        h1{
+
+        h1 {
             margin: 0;
             padding: 32px;
             text-align: center;
             font-size: 40px;
             text-shadow: #FC0 1px 0 10px;
         }
-        .search{
+
+        .search {
             width: 100%;
-            text-align: center;
-            input{
-                padding: 12px 20px;
-                width: 70%;
+            display: flex;
+            justify-content: center;
+
+
+            .submit {
+                width: 60%;
+                background-color: #fff;
+                display: flex;
                 border-radius: 50px;
-                // text-align: center;
-                z-index: 1;
+                overflow: hidden;
+                height: 50px;
+            }
+
+            input {
+                padding-left: 16px;
+                flex: 3;
                 font-size: 1.2rem;
                 outline: none;
                 border: none;
+                overflow: hidden;
+                background-color: #fff;
+            }
+
+            button {
+                padding: 0.6em 1.2em;
+                background-color: #6e0260;
+                cursor: pointer;
+                border: none;
+                outline: none;
+                margin: 2px;
+                border-radius: 48px;
+                font-size: 1.2rem;
+                overflow: hidden;
+                color: aliceblue;
+                text-shadow: #FC0 1px 0 10px;
+
+                &:hover {
+                    opacity: 0.8;
+                }
+
             }
         }
-        .list{
+
+        .list {
             display: flex;
             margin-top: 32px;
             padding: 12px 20px;
@@ -57,19 +92,43 @@
             background-color: rgba(149, 157, 165, 0.2);
             border-radius: 50px;
             font-weight: bold;
-            .item{
+
+            .item {
                 cursor: pointer;
             }
 
         }
-        .main{
-            background-color: #FC0;
-            height: 100%;
+
+        .main {
+            width: 100%;
+            // height: 100%;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-evenly;
+            padding: 12px 20px;
+            background-color: rgba(149, 157, 165, 0.2);
+            border-radius: 50px;
+            margin: 0 30px;
+
+            span {
+                font-weight: bold;
+                display: block;
+                font-size: 2rem;
+                color: antiquewhite;
+                cursor: pointer;
+
+                &:hover {
+                    color: #FC0;
+                }
+            }
         }
 
     }
-    .shadow{
-        text-shadow: #FC0 1px 0 10px;
+
+    .shadow {
+        text-shadow: #FC0 1px 0 16px;
+        color: #FC0;
     }
-  }
-  
+}
