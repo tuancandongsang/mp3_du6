@@ -15,7 +15,7 @@
           <p class="song-detail">Có tổng cộng xxx bài hát</p>
         </div>
         <div class="song-icon">
-          <div class="icon"><DownloadOutlined /></div>
+          <div class="icon"><PlayCircleOutlined /></div>
           <div class="icon"><DashOutlined /></div>
         </div>
       </div>
@@ -26,13 +26,13 @@
 <script>
 import {
   SwapOutlined,
-  DownloadOutlined,
+  PlayCircleOutlined,
   DashOutlined,
 } from "@ant-design/icons-vue";
 import "./singer.scss";
 
 export default {
-  components: { SwapOutlined, DownloadOutlined, DashOutlined },
+  components: { SwapOutlined, PlayCircleOutlined, DashOutlined },
 };
 </script>
 
