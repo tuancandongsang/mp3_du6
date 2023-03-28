@@ -8,7 +8,7 @@
       <div class="item">
         <img
           src="https://i.scdn.co/image/ab67616d0000b27301a70eaa9a7b7a562c4cd6f4"
-          alt=""
+          alt="alo alo"
         />
         <div class="song">
           <p class="song-name">Lê Bảo Bình</p>

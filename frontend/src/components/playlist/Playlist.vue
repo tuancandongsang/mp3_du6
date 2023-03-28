@@ -8,7 +8,7 @@
       <div class="box">
         <img
           src="https://i.scdn.co/image/ab67616d0000b27301a70eaa9a7b7a562c4cd6f4"
-          alt=""
+          alt="ten ca sy"
         />
         <p class="name">Lê Bảo Bình</p>
         <p class="description">Tạo bởi tuancandongsang</p>
@@ -16,7 +16,7 @@
       <div class="box">
         <img
           src="https://i.scdn.co/image/ab67616d0000b27301a70eaa9a7b7a562c4cd6f4"
-          alt=""
+          alt="ten ca sy"
         />
         <p class="name">Lê Bảo Bình</p>
         <p class="description">Tạo bởi tuancandongsang</p>
@@ -24,7 +24,7 @@
       <div class="box">
         <img
           src="https://i.scdn.co/image/ab67616d0000b27301a70eaa9a7b7a562c4cd6f4"
-          alt=""
+          alt="ten ca sy"
         />
         <p class="name">Lê Bảo Bình</p>
         <p class="description">Tạo bởi tuancandongsang</p>
@@ -32,7 +32,7 @@
       <div class="box">
         <img
           src="https://i.scdn.co/image/ab67616d0000b27301a70eaa9a7b7a562c4cd6f4"
-          alt=""
+          alt="ten ca sy"
         />
         <p class="name">Lê Bảo Bình</p>
         <p class="description">Tạo bởi tuancandongsang</p>
@@ -40,7 +40,7 @@
       <div class="box">
         <img
           src="https://i.scdn.co/image/ab67616d0000b27301a70eaa9a7b7a562c4cd6f4"
-          alt=""
+          alt="ten ca sy"
         />
         <p class="name">Lê Bảo Bình</p>
         <p class="description">Tạo bởi tuancandongsang</p>

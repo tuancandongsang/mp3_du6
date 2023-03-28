@@ -7,8 +7,8 @@
     <div class="main">
       <div class="item">
         <img
-          src="http://hanoimoi.com.vn/Uploads/tuandiep/2018/4/8/1(1).jpg"
-          alt=""
+          src="https://cdn.baogiaothong.vn/upload/images/2019-2/article_img/2019-04-05/hong-nhung-2-1554434540-width900height900.jpg"
+          alt="ten sy"
         />
         <div class="song">
           <p class="song-name">ten bai hat</p>
@@ -21,8 +21,8 @@
       </div>
       <div class="item">
         <img
-          src="http://hanoimoi.com.vn/Uploads/tuandiep/2018/4/8/1(1).jpg"
-          alt=""
+          src="https://cdn.baogiaothong.vn/upload/images/2019-2/article_img/2019-04-05/hong-nhung-2-1554434540-width900height900.jpg"
+          alt="ten sy"
         />
         <div class="song">
           <p class="song-name">ten bai hat</p>
@@ -35,8 +35,8 @@
       </div>
       <div class="item">
         <img
-          src="http://hanoimoi.com.vn/Uploads/tuandiep/2018/4/8/1(1).jpg"
-          alt=""
+          src="https://cdn.baogiaothong.vn/upload/images/2019-2/article_img/2019-04-05/hong-nhung-2-1554434540-width900height900.jpg"
+          alt="ten sy"
         />
         <div class="song">
           <p class="song-name">ten bai hat</p>
@@ -49,8 +49,8 @@
       </div>
       <div class="item">
         <img
-          src="http://hanoimoi.com.vn/Uploads/tuandiep/2018/4/8/1(1).jpg"
-          alt=""
+          src="https://cdn.baogiaothong.vn/upload/images/2019-2/article_img/2019-04-05/hong-nhung-2-1554434540-width900height900.jpg"
+          alt="ten sy"
         />
         <div class="song">
           <p class="song-name">ten bai hat</p>
@@ -63,8 +63,8 @@
       </div>
       <div class="item">
         <img
-          src="http://hanoimoi.com.vn/Uploads/tuandiep/2018/4/8/1(1).jpg"
-          alt=""
+          src="https://cdn.baogiaothong.vn/upload/images/2019-2/article_img/2019-04-05/hong-nhung-2-1554434540-width900height900.jpg"
+          alt="ten sy"
         />
         <div class="song">
           <p class="song-name">ten bai hat</p>
@@ -77,8 +77,8 @@
       </div>
       <div class="item">
         <img
-          src="http://hanoimoi.com.vn/Uploads/tuandiep/2018/4/8/1(1).jpg"
-          alt=""
+          src="https://cdn.baogiaothong.vn/upload/images/2019-2/article_img/2019-04-05/hong-nhung-2-1554434540-width900height900.jpg"
+          alt="ten sy"
         />
         <div class="song">
           <p class="song-name">ten bai hat</p>
@@ -91,8 +91,8 @@
       </div>
       <div class="item">
         <img
-          src="http://hanoimoi.com.vn/Uploads/tuandiep/2018/4/8/1(1).jpg"
-          alt=""
+          src="https://cdn.baogiaothong.vn/upload/images/2019-2/article_img/2019-04-05/hong-nhung-2-1554434540-width900height900.jpg"
+          alt="ten sy"
         />
         <div class="song">
           <p class="song-name">ten bai hat</p>
@@ -105,8 +105,8 @@
       </div>
       <div class="item">
         <img
-          src="http://hanoimoi.com.vn/Uploads/tuandiep/2018/4/8/1(1).jpg"
-          alt=""
+          src="https://cdn.baogiaothong.vn/upload/images/2019-2/article_img/2019-04-05/hong-nhung-2-1554434540-width900height900.jpg"
+          alt="ten sy"
         />
         <div class="song">
           <p class="song-name">ten bai hat</p>
@@ -119,8 +119,8 @@
       </div>
       <div class="item">
         <img
-          src="http://hanoimoi.com.vn/Uploads/tuandiep/2018/4/8/1(1).jpg"
-          alt=""
+          src="https://cdn.baogiaothong.vn/upload/images/2019-2/article_img/2019-04-05/hong-nhung-2-1554434540-width900height900.jpg"
+          alt="ten sy"
         />
         <div class="song">
           <p class="song-name">ten bai hat</p>
@@ -133,8 +133,8 @@
       </div>
       <div class="item">
         <img
-          src="http://hanoimoi.com.vn/Uploads/tuandiep/2018/4/8/1(1).jpg"
-          alt=""
+          src="https://cdn.baogiaothong.vn/upload/images/2019-2/article_img/2019-04-05/hong-nhung-2-1554434540-width900height900.jpg"
+          alt="ten sy"
         />
         <div class="song">
           <p class="song-name">ten bai hat</p>
