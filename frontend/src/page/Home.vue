@@ -45,7 +45,7 @@
           <span><AudioOutlined /> </span>
           <span><SearchOutlined /> </span>
           <span><InstagramOutlined /> </span>
-          <span> <LogoutOutlined /></span>
+          <span @click="this.$router.push('/login')"> <LogoutOutlined /></span>
         </div>
       </footer>
     </div>
