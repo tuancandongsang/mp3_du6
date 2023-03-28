@@ -4,21 +4,19 @@
       <div class="header"><b>Bài hát (số bài ở đây)</b></div>
       <div class="icon"><SwapOutlined /></div>
     </div>
-    <div @scroll="handleOnScroll()" class="main">
-      <div   v-for="(item, index) in listData " key ="index" class="item">
-        <img
-          :src="item.img"
-          alt="ten sy"
-        />
+    <div ref="productsList" @scroll="handleScroll" class="main">
+      <div v-for="item in products" :key="item.id" class="item">
+        <img :src="item.url" alt="ten sy" />
         <div class="song">
-          <p class="song-name">{{item.name}}</p>
-          <p class="song-detail">{{item.description}}</p>
+          <p class="song-name">{{ item.id }}</p>
+          <p class="song-detail">{{ item.title }}</p>
         </div>
         <div class="song-icon">
           <div class="icon"><DownloadOutlined /></div>
           <div class="icon"><DashOutlined /></div>
         </div>
       </div>
+      <div v-if="loading">Loading...</div>
     </div>
   </div>
 </template>
@@ -30,43 +28,41 @@ import {
   DashOutlined,
 } from "@ant-design/icons-vue";
 import "./list.scss";
-import create from '@ant-design/icons-vue/lib/components/IconFont';
+import axios from "axios";
 
 export default {
   components: { SwapOutlined, DownloadOutlined, DashOutlined },
-  data(){
+  data() {
     return {
-        listData : [ ] 
-        
-    }
+      products: [],
+      loading: false,
+      start: 0,
+      limit: 10,
+      totalProducts: null,
+    };
   },
-  created (){
-    for(let i = 0 ; i < 8 ; i ++){
-      var objectData =  {
-            id : i ,
-            img : "https://cdn.baogiaothong.vn/upload/images/2019-2/article_img/2019-04-05/hong-nhung-2-1554434540-width900height900.jpg",
-            name : "ten bai hat",
-            description : "noi dung"
-          }
-          this.listData.push(objectData)
-    }
+  created() {},
+  methods: {
+    async getProducts() {
+      this.loading = true;
+      const response = await axios.get(
+        `https://jsonplaceholder.typicode.com/photos?_start=${this.start}&_limit=${this.limit}`
+      );
+      this.totalProducts = response.data;
+      this.products = [...this.products, ...this.totalProducts];
+      this.loading = false;
+    },
+    async handleScroll() {
+      const list = this.$refs.productsList;
+      if (list.scrollTop + list.clientHeight + 2 >= list.scrollHeight) {
+        this.start += 10;
+        await this.getProducts();
+      }
+    },
   },
-  methods : {
-    handleOnScroll(){
-      var listDataScroll = []
-        for(let i = 0 ; i < 10 ; i ++){
-      var objectData =  {
-            id : i ,
-            img : "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiJlma4CE7k2kaDvlwBukxgRamJJcFW2enwNE0yG0iKyOQWc1Fomuavtd-041nDGQoALR3zdo90nUGps3WwUNYHPtj2lE9yFJmIllbA2zzqfa2L5cebUQEwqXQM6CiZ8CIUjB80Y-aNMTSPPCCuhEeg8V9c1f8UlI3xqVA5b9FSQEM7RDUGDV8k6cQMvg/s2048/2.jpg",
-            name : "ten bai hat scroll",
-            description : "noi dung scroll"
-          }
-          listDataScroll.push(objectData)
-    }
-    const newList = [...this.listData , ...listDataScroll]
-    this.listData = newList
-    }
-  }
+  async mounted() {
+    await this.getProducts();
+  },
 };
 </script>
 
