@@ -1,15 +1,15 @@
 <template>
   <div id="list">
     <div class="tittle">
-      <div class="header"><b>Bài hát (số bài ở đây)</b></div>
+      <div class="header"><b>Bài hát</b></div>
       <div class="icon"><SwapOutlined /></div>
     </div>
     <div ref="productsList" @scroll="handleScroll" class="main">
       <div v-for="item in products" :key="item.id" class="item">
-        <img :src="item.url" alt="ten sy" />
+        <img :src="item.thumbnail" alt="ten sy" />
         <div class="song">
-          <p class="song-name">{{ item.id }}</p>
-          <p class="song-detail">{{ item.title }}</p>
+          <p class="song-name">{{ item.songName }}</p>
+          <p class="song-detail">{{ item.songName }}</p>
         </div>
         <div class="song-icon">
           <div class="icon"><DownloadOutlined /></div>
@@ -28,7 +28,7 @@ import {
   DashOutlined,
 } from "@ant-design/icons-vue";
 import "./list.scss";
-import axios from "axios";
+import { getListSong, searchSong } from "../../apis/serveSong";
 
 export default {
   components: { SwapOutlined, DownloadOutlined, DashOutlined },
@@ -36,21 +36,34 @@ export default {
     return {
       products: [],
       loading: false,
-      start: 0,
+      page: 0,
       limit: 10,
       totalProducts: null,
+      search: null,
     };
   },
-  created() {},
+  async created() {
+    this.$watch(
+      () => this.$route.query.q,
+      async (value, _) => {
+        console.log(value);
+        const res = await searchSong({ albumName: value });
+        console.log(res);
+        this.products = res.data.lstSong;
+      }
+    );
+  },
   methods: {
     async getProducts() {
       this.loading = true;
-      const response = await axios.get(
-        `https://jsonplaceholder.typicode.com/photos?_start=${this.start}&_limit=${this.limit}`
-      );
-      this.totalProducts = response.data;
-      this.products = [...this.products, ...this.totalProducts];
-      this.loading = false;
+      try {
+        const response = await getListSong({ page: 0, limit: 20 });
+        this.totalProducts = response.data?.lstSong;
+        this.products = [...this.products, ...this.totalProducts];
+        this.loading = false;
+      } catch (error) {
+        console.log(error);
+      }
     },
     async handleScroll() {
       const list = this.$refs.productsList;
@@ -61,7 +74,13 @@ export default {
     },
   },
   async mounted() {
-    await this.getProducts();
+    if (!this.$route.query.q) {
+      await this.getProducts();
+    } else {
+      const res = await searchSong({ songId: this.$route.query.q });
+      console.log(res);
+      this.products = res.data.lstSong;
+    }
   },
 };
 </script>

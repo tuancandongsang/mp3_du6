@@ -26,6 +26,7 @@
 
 <script>
 import "./login.scss";
+import { setLogin } from "../../apis/serveLogin";
 export default {
   data() {
     return {
@@ -42,28 +43,33 @@ export default {
   },
   watch: {
     username() {
-      this.username && this.username.length < 9
-        ? (this.message = "UserName min length  is 8")
+      this.username && this.username.length < 2
+        ? (this.message = "UserName min length  is 2")
         : (this.message = "");
     },
     password() {
       if (!this.password) {
         this.messagePassword = "Password invalid";
       }
-      if (this.password.length < 7) {
-        this.messagePassword = "Min 6 text";
+      if (this.password.length < 3) {
+        this.messagePassword = "Min 3 text";
       } else {
         this.messagePassword = "";
       }
     },
   },
   methods: {
-    submitLogin() {
+    async submitLogin() {
       if (this.isValidLogin && !this.messagePassword && !this.message) {
-        document.cookie=`username_zingDu6=${this.username} ; expires=${new Date('2023-03-29 14:20:00').toUTCString()}`
-        this.$router.push("/");
+        const fromLogin = { userName: this.username, passWord: this.password };
+        try {
+          const res = await setLogin(fromLogin);
+          window.localStorage.setItem("tokenzing", res.data.assetToken)
+          this.$router.push("/");
+        } catch (error) {
+          console.log(error); 
+        }
       }
-      console.log(document.cookie);
     },
   },
 };

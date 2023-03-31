@@ -10,7 +10,7 @@
             placeholder="Search name, singer..."
             v-model="textSearch"
           />
-          <button @click="SearchForName">Submit</button>
+          <button @click="Search">Submit</button>
         </div>
       </div>
       <div class="list">
@@ -45,7 +45,7 @@
           <span><AudioOutlined /> </span>
           <span><SearchOutlined /> </span>
           <span><InstagramOutlined /> </span>
-          <span @click="this.$router.push('/login')"> <LogoutOutlined /></span>
+          <span @click="logout"> <LogoutOutlined /></span>
         </div>
       </footer>
     </div>
@@ -71,6 +71,12 @@ export default {
   },
 
   name: "home",
+  beforeCreate() {
+    const token = window.localStorage.getItem("tokenzing");
+    if (!token) {
+      this.$router.push("/login");
+    }
+  },
   data() {
     return {
       select: "list",
@@ -83,11 +89,20 @@ export default {
   methods: {
     selectMenu(text) {
       this.select = text;
-      console.log(this.$route);
       this.$router.push(`${text}`);
+      this.textSearch = "";
     },
-    SearchForName() {
-      console.log(this.textSearch);
+    Search() {
+      this.$router.push({
+        name: this.$route.name,
+        query: {
+          q: this.textSearch.trim(),
+        },
+      });
+    },
+    logout() {
+      window.localStorage.removeItem("tokenzing");
+      this.$router.push("/login");
     },
   },
   computeds: {
