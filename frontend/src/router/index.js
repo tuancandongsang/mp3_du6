@@ -3,9 +3,14 @@ import { createRouter, createWebHistory } from 'vue-router';
 export const router = createRouter({
   history: createWebHistory(),
   routes: [
-    { path: '/login',
-  component: () => import('../page/login/Login.vue')
-  },
+    {
+      path: '/login',
+      component: () => import('../page/login/Login.vue')
+    },
+    {
+      path: '/register',
+      component: () => import('../page/login/Login.vue')
+    },
     {
       path: '/',
       redirect: '/list',

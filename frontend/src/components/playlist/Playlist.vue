@@ -30,35 +30,20 @@ export default {
     this.$watch(
       () => this.$route.query.q,
       async (value, _) => {
-        console.log(value);
-        let arr = [];
-        let tottal = [];
+        let arrAllPromise = [];
+        let resultsSearch = [];
         Promise.allSettled([
           getAlbumByName({ albumName: value }),
           getAlbumById({ albumId: value }),
         ]).then((results) => {
-          console.log("results",results);
-          // results.forEach(
-          arr = results.map(
-            (item) => item?.value?.data?.lstAlbum
-            // (item) => console.log("aaa", item.value?.data?.lstAlbum)
-
-            // (result) => (this.lstAlbum = result?.value?.data?.lstAlbum)
-            // (result) => {
-            // return result.map(item => item.value?.data?.lstAlbum)
-            // }
-
-            // console.log("tuancan",)
-            // arrayListSearch.push(result.value.data.lstAlbum)
-          );
-          for (let i = 0; i < arr.length; i++) {
-            tottal.push(...arr[i]);
+          arrAllPromise = results.map((item) => item?.value?.data?.lstAlbum);
+          for (let i = 0; i < arrAllPromise.length; i++) {
+            if (arrAllPromise[i]) {
+              resultsSearch.push(...arrAllPromise[i]);
+            }
           }
-          console.log("tottal", tottal);
-          this.lstAlbum = tottal;
-        }); // "Service mock 1 success!"
-
-        // });
+          this.lstAlbum = resultsSearch;
+        });
       }
     );
     if (!this.$route.query.q) {

@@ -58,7 +58,8 @@
                 text-shadow: #FC0 1px 0 10px;
                 padding-left: 20px;
             }
-            input{
+
+            input {
                 padding: 20px 30px;
                 width: 100%;
                 font-size: 1.2rem;
@@ -69,13 +70,14 @@
                 color: #FC0;
             }
         }
-        .submit{
+
+        .submit {
             width: 100%;
             display: flex;
             justify-content: center;
             margin-top: 40px;
 
-            button{
+            button {
                 display: block;
                 width: 50%;
                 padding: 20px 40px;
@@ -86,10 +88,24 @@
                 color: #fff;
                 font-size: 1.5rem;
                 text-shadow: #FC0 1px 0 10px;
-                &:hover{
+
+                &:hover {
                     opacity: 0.8;
                     cursor: pointer;
                 }
+            }
+        }
+
+        .checkLogin {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+            b{
+                margin-left: 4px;
+                cursor: pointer;
+                font-size: 1.1rem;
+                text-shadow: #FC0 1px 0 10px;
             }
         }
     }

@@ -5,7 +5,7 @@
       <div class="icon"><SwapOutlined /></div>
     </div>
     <div ref="productsList" @scroll="handleScroll" class="main">
-      <div v-for="item in products" :key="item.id" class="item">
+      <div v-for="item in lstSong" :key="item.id" class="item">
         <img :src="item.thumbnail" alt="ten sy" />
         <div class="song">
           <p class="song-name">{{ item.songName }}</p>
@@ -28,13 +28,19 @@ import {
   DashOutlined,
 } from "@ant-design/icons-vue";
 import "./list.scss";
-import { getListSong, searchSong } from "../../apis/serveSong";
+import {
+  getListSong,
+  getSongByAlbumId,
+  getSongBySingerId,
+  getSongById,
+  addSong,
+} from "../../apis/serveSong";
 
 export default {
   components: { SwapOutlined, DownloadOutlined, DashOutlined },
   data() {
     return {
-      products: [],
+      lstSong: [],
       loading: false,
       page: 0,
       limit: 10,
@@ -47,11 +53,29 @@ export default {
       () => this.$route.query.q,
       async (value, _) => {
         console.log(value);
-        const res = await searchSong({ albumName: value });
-        console.log(res);
-        this.products = res.data.lstSong;
+        let arrAllPromise = [];
+        let resultsSearch = [];
+        Promise.allSettled([
+          getSongByAlbumId({ albumId: value }),
+          getSongBySingerId({ singerId: value }),
+          getSongById({ songId: value }),
+        ]).then((results) => {
+          arrAllPromise = results.map((item) => item?.value?.data?.lstSong);
+          for (let i = 0; i < arrAllPromise.length; i++) {
+            if (arrAllPromise[i]) {
+              resultsSearch.push(...arrAllPromise[i]);
+            }
+          }
+          this.lstSong = resultsSearch;
+        });
       }
     );
+    if (!this.$route.query.q) {
+      try {
+        const res = await getAlbulm({ page: 0, limit: 20 });
+        this.lstSong = res.data.lstSong;
+      } catch (error) {}
+    }
   },
   methods: {
     async getProducts() {
@@ -59,7 +83,7 @@ export default {
       try {
         const response = await getListSong({ page: 0, limit: 20 });
         this.totalProducts = response.data?.lstSong;
-        this.products = [...this.products, ...this.totalProducts];
+        this.lstSong = [...this.lstSong, ...this.totalProducts];
         this.loading = false;
       } catch (error) {
         console.log(error);
@@ -76,10 +100,6 @@ export default {
   async mounted() {
     if (!this.$route.query.q) {
       await this.getProducts();
-    } else {
-      const res = await searchSong({ songId: this.$route.query.q });
-      console.log(res);
-      this.products = res.data.lstSong;
     }
   },
 };

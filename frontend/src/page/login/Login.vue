@@ -20,6 +20,12 @@
       <div class="submit">
         <button @click="submitLogin">Submit</button>
       </div>
+      <div class="checkLogin">
+        <p>Bạn đã có tài khoản <b>Đăng nhập ngay</b></p>
+      </div>
+      <div class="checkLogin">
+        <p>Bạn chưa có tài khoản <b>Đăng ký ngay</b></p>
+      </div>
     </div>
   </div>
 </template>
@@ -64,10 +70,10 @@ export default {
         const fromLogin = { userName: this.username, passWord: this.password };
         try {
           const res = await setLogin(fromLogin);
-          window.localStorage.setItem("tokenzing", res.data.assetToken)
+          window.localStorage.setItem("tokenzing", res.data.assetToken);
           this.$router.push("/");
         } catch (error) {
-          console.log(error); 
+          console.log(error);
         }
       }
     },
