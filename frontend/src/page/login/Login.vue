@@ -2,15 +2,22 @@
   <div id="login">
     <div class="background"></div>
     <div class="container">
-      <h1>Login</h1>
+      <h1 v-if="pageCurrent === 'login'">Login</h1>
+      <h1 v-if="pageCurrent === 'register'">Register</h1>
       <div class="form">
         <div class="username">
-          <label for="">Username:</label>
+          <label for="" v-if="pageCurrent === 'login'">Username:</label>
+          <label for="" v-if="pageCurrent === 'register'"
+            >Create Username:</label
+          >
           <input type="text" v-model="username" @blur="checkName" />
           <div class="validate-input">{{ message }}</div>
         </div>
         <div class="password">
-          <label for="">Password:</label>
+          <label for="" v-if="pageCurrent === 'login'">Password:</label>
+          <label for="" v-if="pageCurrent === 'register'"
+            >Create Password:</label
+          >
           <input type="password" v-model="password" />
           <div class="validate-input">
             {{ messagePassword }}
@@ -20,11 +27,17 @@
       <div class="submit">
         <button @click="submitLogin">Submit</button>
       </div>
-      <div class="checkLogin">
-        <p>Bạn đã có tài khoản <b>Đăng nhập ngay</b></p>
+      <div class="checkLogin" v-if="pageCurrent === 'register'">
+        <p>
+          Bạn đã có tài khoản
+          <b @click="this.$router.push('/login')">Đăng nhập ngay</b>
+        </p>
       </div>
-      <div class="checkLogin">
-        <p>Bạn chưa có tài khoản <b>Đăng ký ngay</b></p>
+      <div class="checkLogin" v-if="pageCurrent === 'login'">
+        <p>
+          Bạn chưa có tài khoản
+          <b @click="this.$router.push('/register')">Đăng ký ngay</b>
+        </p>
       </div>
     </div>
   </div>
@@ -40,7 +53,17 @@ export default {
       password: "",
       message: "",
       messagePassword: "",
+      pageCurrent: "",
     };
+  },
+  created() {
+    this.pageCurrent = this.$route.name;
+    this.$watch(
+      () => this.$route.name,
+      (value, _) => {
+        this.pageCurrent = value;
+      }
+    );
   },
   computed: {
     isValidLogin() {
@@ -65,15 +88,35 @@ export default {
     },
   },
   methods: {
+    changeToLogin() {
+      this.$router.push("/login");
+    },
+    changeToRegister() {
+      this.$router.push("/register");
+    },
     async submitLogin() {
       if (this.isValidLogin && !this.messagePassword && !this.message) {
-        const fromLogin = { userName: this.username, passWord: this.password };
-        try {
-          const res = await setLogin(fromLogin);
-          window.localStorage.setItem("tokenzing", res.data.assetToken);
-          this.$router.push("/");
-        } catch (error) {
-          console.log(error);
+        if (this.pageCurrent === "login") {
+          const fromLogin = {
+            userName: this.username.trim(),
+            passWord: this.password.trim(),
+          };
+          try {
+            const res = await setLogin(fromLogin);
+            window.localStorage.setItem("tokenzing", res.data.assetToken);
+            this.$router.push("/");
+          } catch (error) {
+            console.log(error);
+          }
+        }
+        if (this.pageCurrent === "register") {
+          const fromRegister = {
+            userName: this.username,
+            passWord: this.password,
+          };
+          try {
+            this.$router.push("/login");
+          } catch (error) {}
         }
       }
     },

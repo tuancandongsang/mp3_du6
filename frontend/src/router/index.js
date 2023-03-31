@@ -1,35 +1,37 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory } from "vue-router";
 
 export const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
-      path: '/login',
-      component: () => import('../page/login/Login.vue')
+      path: "/login",
+      name: "login",
+      component: () => import("../page/login/Login.vue"),
     },
     {
-      path: '/register',
-      component: () => import('../page/login/Login.vue')
+      path: "/register",
+      name: "register",
+      component: () => import("../page/login/Login.vue"),
     },
     {
-      path: '/',
-      redirect: '/list',
+      path: "/",
+      redirect: "/list",
       component: () => import("../page/Home.vue"),
       children: [
         {
-          path: 'list',
+          path: "list",
           component: () => import("../components/list/List.vue"),
-          name: 'list'
+          name: "list",
         },
         {
-          path: 'playlist',
+          path: "playlist",
           component: () => import("../components/playlist/Playlist.vue"),
-          name: 'playlist'
+          name: "playlist",
         },
         {
-          path: 'singer',
+          path: "singer",
           component: () => import("../components/singer/Singer.vue"),
-          name: 'singer'
+          name: "singer",
         },
       ],
     },
