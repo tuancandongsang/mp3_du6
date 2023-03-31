@@ -39,6 +39,8 @@ export default {
   data() {
     return {
       lstSinger: [],
+      lstSingerById: [],
+      lstSingerbyAlbumId: [],
     };
   },
   async created() {
@@ -58,11 +60,19 @@ export default {
           ]);
           if (byId.status === "fulfilled") {
             console.log(byId);
+            // this.lstSingerById = byId.value.data.lstSinger;
           }
           if (byAlbumId.status === "fulfilled") {
             console.log(byAlbumId);
+            // this.lstSingerbyAlbumId = byAlbumId.value.data.lstSinger;
           }
-          this.lstSinger = [...byId, ...byAlbumId];
+          // this.lstSinger = [...this.lstSingerById, ...this.lstSingerbyAlbumId];
+
+          // lọc trùng
+          // const lstSingertotal = [...this.lstSingerById, ...this.lstSingerbyAlbumId];
+          // this.lstSinger = Array.from(
+          //   new Set(lstSingertotal.map((item) => JSON.stringify(item)))
+          // ).map((item) => JSON.parse(item));
         } catch (error) {}
       }
     );
