@@ -51,31 +51,32 @@ export default {
     this.$watch(
       () => this.$route.query.q,
       async (value, _) => {
-        if (!value) {
-          try {
-            const res = await getSingerList({ page: 0, limit: 20 });
-            this.lstSinger = res.data.lstSinger;
-          } catch (error) {}
-        } else {
-          let arrAllPromise = [];
-          let resultsSearch = [];
-          Promise.allSettled([
-            getSingerById({ singerId: value }),
-            getSingerByAlbumId({ singerId: value }),
-          ]).then((results) => {
-            arrAllPromise = results.map((item) => item?.value?.data?.lstSinger);
-            for (let i = 0; i < arrAllPromise.length; i++) {
-              if (arrAllPromise[i]) {
-                resultsSearch.push(...arrAllPromise[i]);
-              }
-            }
-            this.lstSinger = resultsSearch;
-          });
-        }
+        try {
+          const [byId, byAlbumId] = await Promise.allSettled([
+            this.getSingerById(value),
+            this.getSingerByAlbumId(value),
+          ]);
+          if (byId.status === "fulfilled") {
+            console.log(byId);
+          }
+          if (byAlbumId.status === "fulfilled") {
+            console.log(byAlbumId);
+          }
+          this.lstSinger = [...byId, ...byAlbumId];
+        } catch (error) {}
       }
     );
   },
-  async mounted() {},
+  methods: {
+    async getSingerById(value) {
+      const response = await getSingerById({ singerId: value });
+      return response.data.lstSinger;
+    },
+    async getSingerByAlbumId(value) {
+      const response = await getSingerByAlbumId({ singerId: value });
+      return response.data.lstSinger;
+    },
+  },
 };
 </script>
 
